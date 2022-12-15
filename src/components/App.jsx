@@ -1,19 +1,24 @@
+import styles from './App.module.css';
+import Section from 'components/Section/Section';
+import ContactForm from 'components/ContactForm/ContactForm';
 import React from 'react';
-import style from './App.module.css';
-
-import ContactForm from './ContactForm/ContactForm';
-import { Filter } from './Filter/Filter';
-import { ContactList } from './ContactsList/ContactList';
-
+import ContactList from './ContactsList/ContactList';
+import Filter from './Filter/Filter';
 
 const App = () => {
+  const { wrapper } = styles;
 
   return (
-    <div className={style.container}>
-      <h1>Phonebook</h1>
-      <ContactForm />
-      <Filter/>
-      <ContactList/>
+    <div className={wrapper}>
+      <Section title="Phonebook">
+        <ContactForm />
+      </Section>
+      <Section title="Contacts">
+        <>
+          <Filter />
+          <ContactList />
+        </>
+      </Section>
     </div>
   );
 };

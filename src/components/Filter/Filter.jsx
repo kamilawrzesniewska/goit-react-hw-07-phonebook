@@ -1,21 +1,25 @@
-import style from './Filter.module.css';
-
-import { setFilter } from 'redux/actions';
+import styles from './Filter.module.css';
+import React from 'react';
 import { useDispatch } from 'react-redux';
+import { setFilter } from 'redux/filterSlice';
 
-export const Filter = () => {
-    
+
+const Filter = () => {
+  const { field, text, input } = styles;
+
   const dispatch = useDispatch();
 
-  const onChange = event => {
-    const value = event.target.value.toLowerCase();
-
+  const filterValue = e => {
+    const value = e.target.value.toLowerCase();
     dispatch(setFilter(value));
   };
 
   return (
-    <label>
-      Find contacts by Name <input className={style.filterInput} type="name" onChange={onChange} />
-    </label>
+    <div className={field}>
+      <p className={text}>Find contact by name</p>
+      <input className={input} type="text" onChange={filterValue} />
+    </div>
   );
 };
+
+export default Filter;
